@@ -5,13 +5,15 @@ Ejemplo: 347 ->3 + 4 + 7 = 14 -> 1 + 4 -> 5 -> Raíz digital (347) = 5.
 Escribir un programa que calcule la raíz digital de un número. """
 
 n= int(input("Escribir un numero natural: "))
-aux_n=n
-acum=0
-    
-while (aux_n // 10 != 0):
-    mod=aux_n%10
-    acum+=mod
-    aux_n //= 10
 
-acum+=aux_n
-print(acum)
+while (n //10 != 0):
+    acum=0
+    aux_n=n
+    while (aux_n // 10 != 0):
+        mod=aux_n%10
+        acum+=mod
+        aux_n //= 10
+    
+    acum+=aux_n
+    n = acum
+print("La raiz digital es :".format(n))
