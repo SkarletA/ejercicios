@@ -1,4 +1,4 @@
-#Ejericio 21.-Escribe un programa que, dado un número entero positivo y lo devuelva al revés.
+#Ejercicio 21.-Escribe un programa que, dado un número entero positivo y lo devuelva al revés.
 #Por ejemplo, si el número de entrada es 1234, la rutina debería devolver 4321.
 
 numero = int(input('Ingresa un numero positivo: '))
