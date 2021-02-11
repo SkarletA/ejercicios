@@ -58,4 +58,10 @@ while (intentos < 10 and no_gano):
                 print(f"{num[i]}- ", end = " ")
             else:
                 print(f"{num[i]} ", end = " ")
+        if count == 4:
+            no_gano = False
         print()
+
+if no_gano:
+    numero_random = "".join(map(str, v))
+    print(f"Oh no perdiste! no acertaste el numero correcto era: {numero_random} ")  
