@@ -14,54 +14,73 @@ Tanto si se adivina el número como si no se dará la posibilidad de jugar de nu
 
 import random
 
-v = []
+volver_jugar = True
+while (volver_jugar):
 
-while (len(v) < 4):
-    numero = random.randrange(1, 9)
-    if numero not in v:
-        v.append(numero)
-print(v)
+    v = []
 
-no_gano = True
-intentos = 0
-while (intentos < 10 and no_gano):
-    n = int (input("Ingrese un numero de 4 cifras : "))
-    num = []
-    intentos += 1
-    while(n > 0):
-        aux = n % 10
-        if aux not in (num):
-            num.insert(0, (aux))
-        n //= 10
-    if len(num) != 4:
-        print("Error, numero invalido!! tiene que ser de 4 cifras.!!! ")
-    else:
-        count = 0
-        for i in range(4):
-            j = 0
-            acertado_1 = True
-            acertado_2 = True
-            acertado = True
-            while (acertado and j < 4):
-                if v[j] == num[i]:
-                    if i == j :
-                        acertado_1 = False
-                        acertado = acertado_1
-                        count += 1
-                    else:
-                        acertado_2 = False
-                        acertado = acertado_2
-                j += 1
-            if acertado_1 == False:
-                print(f"{num[i]}+ ", end = " ")
-            elif acertado_2 ==False:
-                print(f"{num[i]}- ", end = " ")
-            else:
-                print(f"{num[i]} ", end = " ")
-        if count == 4:
-            no_gano = False
-        print()
+    while (len(v) < 4):
+        numero = random.randrange(1, 9)
+        if numero not in v:
+            v.append(numero)
 
-if no_gano:
-    numero_random = "".join(map(str, v))
-    print(f"Oh no perdiste! no acertaste el numero correcto era: {numero_random} ")  
+    no_gano = True
+    intentos = 0
+
+    while (intentos < 10 and no_gano):
+        n = int (input("Ingrese un numero de 4 cifras : "))
+        num = []
+        intentos += 1
+
+        while(n > 0):
+            aux = n % 10
+
+            if aux not in (num):
+                num.insert(0, (aux))
+            n //= 10
+
+        if len(num) != 4:
+            print("Error, numero invalido!! tiene que ser de 4 cifras.!!! ")
+
+        else:
+            count = 0
+
+            for i in range(4):
+                j = 0
+                acertado_1 = True
+                acertado_2 = True
+                acertado = True
+
+                while (acertado and j < 4):
+                    if v[j] == num[i]:
+                        if i == j :
+                            acertado_1 = False
+                            acertado = acertado_1
+                            count += 1
+
+                        else:
+                            acertado_2 = False
+                            acertado = acertado_2
+                    j += 1
+
+                if acertado_1 == False:
+                    print(f"{num[i]}+ ", end = " ")
+
+                elif acertado_2 ==False:
+                    print(f"{num[i]}- ", end = " ")
+
+                else:
+                    print(f"{num[i]} ", end = " ")
+
+            if count == 4:
+                no_gano = False
+            print()
+
+    if no_gano:
+        numero_random = "".join(map(str, v))
+        print(f"Oh no perdiste! no acertaste el numero correcto era: {numero_random} ")  
+    
+    usuario = str(input("Quieres volver a jugar, responda Si o No?: "))
+    
+    if usuario != "Si":
+        volver_jugar = False
